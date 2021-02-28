@@ -1,13 +1,13 @@
 <template>
   <el-row :gutter="10" style="width:100%">
     <el-col :span="6" v-for="(item, index) in menuList" :key="index">
-      <el-card :body-style="{ padding: '20px' }" shadow="hover" class="box-card" @click="testclick()" style="cursor: pointer;">
-        <img src="../assets/picture/noodle.webp" class="image" />
+      <el-card :body-style="{ padding: '20px' }" shadow="hover" class="box-card" style="cursor: pointer;">
+        <img :src="item.imagePath" class="image" />
         <div style="padding: 14px;">
           <h1>{{ item.name }}</h1>
           <div class="bottom">
-            <time class="time">{{ currentDate }}</time>
-            <el-button type="text" class="button" @click.stop>詳細玩法</el-button>
+            <time class="time">價格 : {{ item.price }} 元</time>
+            <el-button type="text" class="button" @click.stop>詳細資訊</el-button>
           </div>
         </div>
       </el-card>
@@ -21,27 +21,24 @@ import { defineComponent } from "vue";
 interface MenuItem {
   imagePath: string;
   name: string;
+  price: number;
 }
 export default defineComponent({
   name: "Menu",
   setup() {
-    const testclick = function() {
-      window.open("http://140.118.127.179/BoardGame/sicbo/");
-    };
-
-    return {
-      testclick,
-    };
+    return {};
   },
   data() {
     const menuList: Array<MenuItem> = [
       {
         imagePath: "../assets/picture/GlutinousRice.webp",
         name: "爌肉飯",
+        price: 50,
       },
       {
         imagePath: "../assets/picture/noodle.webp",
         name: "炒麵",
+        price: 20,
       },
     ];
     return {
@@ -55,7 +52,7 @@ export default defineComponent({
 
 <style scoped>
 .time {
-  font-size: 13px;
+  font-size: 18px;
   color: #999;
 }
 
