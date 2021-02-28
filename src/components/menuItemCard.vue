@@ -51,7 +51,7 @@ export default defineComponent({
 }
 .box-card {
   width: 95%;
-  height: 100%;
+  height: auto;
   margin: 20px auto;
 }
 </style>

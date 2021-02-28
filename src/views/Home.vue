@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    :default-active="'Home'"
+    :default-active="route.name"
     class="el-menu-demo"
     mode="horizontal"
     @select="handleSelect"
@@ -10,11 +10,8 @@
   >
     <el-menu-item index="Blank" style="width:50px"></el-menu-item>
     <el-menu-item index="Home" style="width:150px">首頁</el-menu-item>
-    <el-submenu index="Platform" style="width:150px">
-      <template #title>平台</template>
-      <el-menu-item index="Menu">菜單</el-menu-item>
-    </el-submenu>
-    <el-menu-item index="News" style="width:150px">消息中心</el-menu-item>
+    <el-menu-item index="Menu" style="width:150px">菜單</el-menu-item>
+    <el-menu-item index="Info" style="width:150px">消息中心</el-menu-item>
     <el-menu-item index="About" style="width:150px">關於</el-menu-item>
   </el-menu>
   <router-view />
@@ -50,10 +47,11 @@ export default defineComponent({
   },
   methods: {
     handleSelect(key: any, keyPath: any) {
-      console.log(key, keyPath, this.route.path);
+      console.log(key, keyPath, this.route.name);
       if (key === "Home") this.router.push("/");
       if (key === "About") this.router.push("/about");
       if (key === "Menu") this.router.push("/menu");
+      if (key === "Info") this.router.push("/info");
     },
   },
   data() {
