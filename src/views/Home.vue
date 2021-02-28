@@ -16,7 +16,7 @@
   </el-menu>
   <router-view />
   <div v-if="route.path === `/`">
-    <el-carousel height="600px">
+    <el-carousel height="800px">
       <el-carousel-item v-for="Image in MainPicture" :key="Image">
         <img :src="Image.path" class="image" />
       </el-carousel-item>
