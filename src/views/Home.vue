@@ -12,7 +12,7 @@
     <el-menu-item index="Home" style="width:150px">首頁</el-menu-item>
     <el-submenu index="Platform" style="width:150px">
       <template #title>平台</template>
-      <el-menu-item index="Game">Game</el-menu-item>
+      <el-menu-item index="Menu">菜單</el-menu-item>
       <el-menu-item index="2-2">選項2</el-menu-item>
       <el-menu-item index="2-3">選項3</el-menu-item>
       <el-submenu index="2-4">
@@ -27,10 +27,8 @@
   </el-menu>
   <router-view />
   <div v-if="route.path === `/`">
-    <img
-      src="https://previews.123rf.com/images/viktorijareut/viktorijareut1501/viktorijareut150100067/36000467-illustration-of-game-game-icons-video-game-icon-play-icon-game-console.jpg"
-      class="image"
-    />
+    <img src="../assets/picture/mainPicture.jpg" class="image" />
+    <img src="../assets/picture/menu.webp" class="image" />
   </div>
 </template>
 
@@ -60,7 +58,7 @@ export default defineComponent({
       console.log(key, keyPath, this.route.path);
       if (key === "Home") this.router.push("/");
       if (key === "About") this.router.push("/about");
-      if (key === "Game") this.router.push("/game");
+      if (key === "Menu") this.router.push("/menu");
     },
   },
 });
