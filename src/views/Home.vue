@@ -13,22 +13,17 @@
     <el-submenu index="Platform" style="width:150px">
       <template #title>平台</template>
       <el-menu-item index="Menu">菜單</el-menu-item>
-      <el-menu-item index="2-2">選項2</el-menu-item>
-      <el-menu-item index="2-3">選項3</el-menu-item>
-      <el-submenu index="2-4">
-        <template #title>選項4</template>
-        <el-menu-item index="2-4-1">選項1</el-menu-item>
-        <el-menu-item index="2-4-2">選項2</el-menu-item>
-        <el-menu-item index="2-4-3">選項3</el-menu-item>
-      </el-submenu>
     </el-submenu>
     <el-menu-item index="News" style="width:150px">消息中心</el-menu-item>
     <el-menu-item index="About" style="width:150px">關於</el-menu-item>
   </el-menu>
   <router-view />
   <div v-if="route.path === `/`">
-    <img src="../assets/picture/mainPicture.jpg" class="image" />
-    <img src="../assets/picture/menu.webp" class="image" />
+    <el-carousel height="600px">
+      <el-carousel-item v-for="Image in MainPicture" :key="Image">
+        <img :src="Image.path" class="image" />
+      </el-carousel-item>
+    </el-carousel>
   </div>
 </template>
 
@@ -61,12 +56,29 @@ export default defineComponent({
       if (key === "Menu") this.router.push("/menu");
     },
   },
+  data() {
+    const MainPicture = [
+      {
+        path: require("@/assets/picture/mainPicture.jpg"),
+      },
+      {
+        path: require("@/assets/picture/menu.webp"),
+      },
+      {
+        path: require("@/assets/picture/Set.webp"),
+      },
+    ];
+    return {
+      MainPicture,
+    };
+  },
 });
 </script>
 
 <style scoped>
 .image {
   width: 100%;
+  height: 100%;
   display: block;
 }
 </style>

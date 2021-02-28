@@ -1,49 +1,49 @@
 <template>
-  <el-row :gutter="10" style="width:100%">
-    <el-col :span="6" v-for="(item, index) in menuList" :key="index">
-      <el-card :body-style="{ padding: '20px' }" shadow="hover" class="box-card" style="cursor: pointer;">
-        <img :src="item.imagePath" class="image" />
-        <div style="padding: 14px;">
-          <h1>{{ item.name }}</h1>
-          <div class="bottom">
-            <time class="time">價格 : {{ item.price }} 元</time>
-            <el-button type="text" class="button" @click.stop>詳細資訊</el-button>
-          </div>
-        </div>
-      </el-card>
+  <div style="height:30px" />
+  <span class="menufont">主食</span>
+  <el-divider></el-divider>
+  <el-row style="width:100%" type="flex" justify="center">
+    <el-col :span="6" v-for="(item, index) in MainmealList" :key="index">
+      <menu-item-card :item="item" />
+    </el-col>
+  </el-row>
+  <div style="height:30px" />
+  <span class="menufont">湯品</span>
+  <el-divider></el-divider>
+  <el-row style="width:100%" type="flex" justify="center">
+    <el-col :span="6" v-for="(item, index) in SoupList" :key="index">
+      <menu-item-card :item="item" />
+    </el-col>
+  </el-row>
+  <div style="height:30px" />
+  <span class="menufont">小菜</span>
+  <el-divider></el-divider>
+  <el-row style="width:100%" type="flex" justify="center">
+    <el-col :span="6" v-for="(item, index) in SideDishList" :key="index">
+      <menu-item-card :item="item" />
     </el-col>
   </el-row>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { MainmealList, SoupList, SideDishList } from "@/data/menuItem";
+import menuItemCard from "@/components/menuItemCard.vue";
 
-interface MenuItem {
-  imagePath: string;
-  name: string;
-  price: number;
-}
 export default defineComponent({
   name: "Menu",
+  components: {
+    menuItemCard,
+  },
   setup() {
     return {};
   },
   data() {
-    const menuList: Array<MenuItem> = [
-      {
-        imagePath: "../assets/picture/GlutinousRice.webp",
-        name: "爌肉飯",
-        price: 50,
-      },
-      {
-        imagePath: "../assets/picture/noodle.webp",
-        name: "炒麵",
-        price: 20,
-      },
-    ];
     return {
       currentDate: new Date(),
-      menuList,
+      MainmealList,
+      SoupList,
+      SideDishList,
     };
   },
   method: {},
@@ -51,31 +51,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.time {
-  font-size: 18px;
-  color: #999;
-}
-
-.bottom {
-  margin-top: 13px;
-  line-height: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.button {
-  padding: 0;
-  min-height: auto;
-}
-
-.image {
-  width: 100%;
-  display: block;
-}
-
-.box-card {
-  width: 90%;
-  margin: 20px auto;
+.menufont {
+  font-size: 50px;
+  font-weight: bold;
+  height: 100px;
 }
 </style>

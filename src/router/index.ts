@@ -40,7 +40,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(store.state.isLogin)
+  console.log(store.state.isLogin, to)
   if (to.name !== "Login" && !store.state.isLogin) {
     next({ name: "Login" });
   } else {
